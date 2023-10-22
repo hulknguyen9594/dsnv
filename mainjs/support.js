@@ -39,27 +39,27 @@ function addNewSV(
       }
     },
   };
-  dsnv.push(sv);
+  return sv;
 }
 
 //show table
-function showTable(dsnv) {
+function showTable(item) {
   var contentHTML = "";
-  for (var i = 0; i < dsnv.length; i++) {
+  for (var i = 0; i < item.length; i++) {
     contentHTML += `
     <tr>
-        <td> ${dsnv[i].id} </td>
-        <td> ${dsnv[i].name} </td>
-        <td> ${dsnv[i].email} </td>
-        <td> ${dsnv[i].datepicker} </td>
-        <td> ${dsnv[i].chucvu} </td>
-        <td> ${dsnv[i].tongluong().toLocaleString("en-US", {
+        <td> ${item[i].id} </td>
+        <td> ${item[i].name} </td>
+        <td> ${item[i].email} </td>
+        <td> ${item[i].datepicker} </td>
+        <td> ${item[i].chucvu} </td>
+        <td> ${item[i].tongluong().toLocaleString("en-US", {
           style: "currency",
           currency: "VND",
         })} </td>
-        <td> ${dsnv[i].xeploai()} </td>
+        <td> ${item[i].xeploai()} </td>
         <td>
-            <button class="btn btn-danger" onclick="remove(${dsnv[i].id})">Xoá
+            <button class="btn btn-danger" onclick="remove(${item[i].id})">Xoá
             </button>
         </td>
     </tr>`;

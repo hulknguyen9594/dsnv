@@ -27,8 +27,10 @@ function themNhanVien() {
     kiemTraGioLamViec(giolam)
   ) {
     //add vao danh sach sinh vien
-    addNewSV(id, name, email, password, datepicker, luongCB, chucvu, giolam);
 
+    dsnv.push(
+      addNewSV(id, name, email, password, datepicker, luongCB, chucvu, giolam)
+    );
     // show len layout
     showTable(dsnv);
   }
@@ -48,4 +50,27 @@ function remove(id) {
   });
   dsnv.splice(vitri, 1);
   showTable(dsnv);
+}
+
+// tim nhan vien
+function findNV() {
+  var timKiem = document.querySelector("#searchName").value;
+  var newdsnv = [];
+  for (var i = 0; i < dsnv.length; i++) {
+    if (dsnv[i].xeploai() == timKiem) {
+      newdsnv.push(
+        addNewSV(
+          dsnv[i].id,
+          dsnv[i].name,
+          dsnv[i].email,
+          dsnv[i].password,
+          dsnv[i].datepicker,
+          dsnv[i].luongCB,
+          dsnv[i].chucvu,
+          dsnv[i].giolam
+        )
+      );
+    }
+  }
+  showTable(newdsnv);
 }
